@@ -1,4 +1,4 @@
-package com.afzaalahmadzeeshan.android.paging
+package com.nyumbakumiapp.android.paging
 
 import org.junit.Test
 

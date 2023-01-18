@@ -1,7 +1,7 @@
-package com.afzaalahmadzeeshan.android.paging.utils
+package com.nyumbakumiapp.android.paging.utils
 
 import android.content.Context
-import com.afzaalahmadzeeshan.android.paging.models.Country
+import com.nyumbakumiapp.android.paging.models.Country
 import com.google.gson.Gson
 
 class CountriesDb {
