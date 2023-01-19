@@ -9,7 +9,7 @@ class CountriesDb {
         private lateinit var countries: ArrayList<Country>
 
         fun initialize(context: Context) {
-            val content = context.assets.open("countries.json")
+            val content = context.assets.open("countries_paged.json")
                     .bufferedReader()
                     .use {
                         it.readText()
@@ -17,7 +17,6 @@ class CountriesDb {
             countries = ArrayList(Gson()
                             .fromJson(content, Array<Country>::class.java)
                             .toList())
-            getCountries()
         }
 
         fun getCountries(): List<Country> {

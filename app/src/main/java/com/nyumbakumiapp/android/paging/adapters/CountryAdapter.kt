@@ -1,12 +1,12 @@
-package com.nyumbakumiapp.android.paging.adapter
+package com.nyumbakumiapp.android.paging.adapters
 
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.nyumbakumiapp.android.paging.CountryViewHolder
 import com.nyumbakumiapp.android.paging.models.Country
+import com.nyumbakumiapp.android.paging.viewholders.CountryViewHolder
 
-class CountryAdapter: PagedListAdapter<Country,CountryViewHolder>(COUNTRY_DIFFUTIL_CALLBACK){
+class CountryAdapter: PagedListAdapter<Country, CountryViewHolder>(COUNTRY_DIFFUTIL_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         return CountryViewHolder.create(parent)
     }
@@ -14,20 +14,21 @@ class CountryAdapter: PagedListAdapter<Country,CountryViewHolder>(COUNTRY_DIFFUT
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         val country = getItem(position)
 
-        if (country != null){
+        if (country != null) {
             holder.bind(country)
         }
     }
 
-    companion object{
-        private val COUNTRY_DIFFUTIL_CALLBACK = object: DiffUtil.ItemCallback<Country>(){
+    companion object {
+        private val COUNTRY_DIFFUTIL_CALLBACK = object: DiffUtil.ItemCallback<Country>() {
             override fun areItemsTheSame(oldItem: Country, newItem: Country): Boolean {
-                return  oldItem.id == newItem.id
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(oldItem: Country, newItem: Country): Boolean {
                 return oldItem.name == newItem.name
             }
+
         }
     }
 }

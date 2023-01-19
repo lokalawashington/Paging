@@ -7,7 +7,6 @@ import androidx.paging.PositionalDataSource
 import com.nyumbakumiapp.android.paging.models.Country
 import com.nyumbakumiapp.android.paging.utils.CountriesDb
 
-
 class PositionalCountryDataSource: PositionalDataSource<Country>() {
     private val TAG: String = "PositionalCountryDataSource"
     private val source = CountriesDb.getCountries()
@@ -44,7 +43,6 @@ class PositionalCountryDataSource: PositionalDataSource<Country>() {
     }
 }
 
-//DataSource Factory
 class PositionalCountryDataSourceFactory: DataSource.Factory<Int, Country>() {
     var dataSource = MutableLiveData<PositionalCountryDataSource>()
     lateinit var latestSource: PositionalCountryDataSource
