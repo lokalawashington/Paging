@@ -9,7 +9,9 @@ import com.nyumbakumiapp.android.paging.utils.CountriesDb
 
 
 class PagedCountriesDataSource: PageKeyedDataSource<Int, Country>() {
+    //tag
     private val TAG: String = "PagedCountriesDataSource"
+    //fetch countries from the datasource
     private val source = CountriesDb.getCountries()
 
     override fun loadInitial(
@@ -40,6 +42,7 @@ class PagedCountriesDataSource: PageKeyedDataSource<Int, Country>() {
     }
 }
 
+//DataSource Factory
 class PagedCountriesDataSourceFactory: DataSource.Factory<Int, Country>() {
     var dataSource = MutableLiveData<PagedCountriesDataSource>()
     lateinit var latestSource: PagedCountriesDataSource
