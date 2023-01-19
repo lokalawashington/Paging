@@ -9,7 +9,13 @@ import com.nyumbakumiapp.android.paging.utils.CountriesDb
 
 class PagedCountriesDataSource: PageKeyedDataSource<Int, Country>() {
     private val TAG: String = "PagedCountriesDataSource"
-    private val source = CountriesDb.getCountries()
+    private var source = CountriesDb.getCountries()
+
+    fun deleteById(id: Int) {
+        Log.v(TAG, "removing country by id ${id} and invalidating...")
+        CountriesDb.deleteCountryById(id)
+        invalidate()
+    }
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
@@ -40,8 +46,15 @@ class PagedCountriesDataSource: PageKeyedDataSource<Int, Country>() {
 }
 
 class PagedCountriesDataSourceFactory: DataSource.Factory<Int, Country>() {
+    private val TAG: String = "PagedCountriesDataSourceFactory"
+
     var dataSource = MutableLiveData<PagedCountriesDataSource>()
     lateinit var latestSource: PagedCountriesDataSource
+
+    fun deleteById(id: Int) {
+        Log.v(TAG, "removing country by id ${id}...")
+        latestSource.deleteById(id)
+    }
 
     override fun create(): DataSource<Int, Country> {
         latestSource = PagedCountriesDataSource()
